@@ -13,8 +13,10 @@
     <div>
       <%if @current_user%>
         Welcome <%=@current_user["username"]%>!
-        <a href="/">Home</a>
-        <a href="/logout">Logout</a>
+        <p>
+          <a href="/">Home</a>
+          <a href="/logout">Logout</a>
+        </p>
       <%else%>
         <a href="/login">Login</a> or
         <a href="/users/new">Signup</a>
