@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
       password_in_the_database = @user["password"]
       if BCrypt::Password.new(password_in_the_database) == password_the_user_typed
         flash["notice"] = "Welcome"
-        redirect_to "/places/new"
+        session["user_name"] = @user["username"]
+        session["user_id"] = @user["id"]
+        redirect_to "/places"
       else
         flash["notice"] = "Our records indicate that you provided a wrong password"
         redirect_to "/sessions/new"
@@ -22,6 +24,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    flash["notice"] = "Goodbye!"
+    session["user_id"] = nil
+    session["user_name"] = nil
+    redirect_to "/sessions/new"
   end
 end
   
