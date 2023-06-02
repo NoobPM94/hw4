@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: trave_production
+  username: trave
+  password: <%= ENV["TRAVE_DATABASE_PASSWORD"] %>
