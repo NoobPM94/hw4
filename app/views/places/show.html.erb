@@ -1,14 +1,48 @@
+</html>
+
+<!DOCTYPE html>
+<html>
+
 <% if @current_user%>
 
     <h1><%= @place["name"] %></h1>
 
     <h2>My Posts</h2>
-    <% for post in @posts %>
-      <h3><%= post["title"] %></h3>
-      <h4><%= post["posted_on"] %></h4>
-      <p><%= post["description"] %></p>
-    <% end %>
+          <head>
+            <meta charset="utf-8">
+            <title>Travel Posts</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+            <style>
+              .fixed-width-container {
+                max-width: 1200px;
+                margin: 0 auto;
+              }
 
+              .post-section {
+                padding: 20px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="fixed-width-container">
+              <div class="row">
+              <% for post in @posts %>
+                  <div class="col-lg-4">
+                    <div class="post-section">
+                          <h3><%= post["title"] %></h3>
+                          <h4><%= post["posted_on"] %></h4>
+                          <p><%= post["description"] %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+          </body>
+          </html>
     <p>
       <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
     </p>
@@ -19,42 +53,3 @@
 <% else %>
     <p> You must be logged in!</p>
 <%end%>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-  <title>Travel Posts</title>
-  <style>
-    .fixed-width-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .post-section {
-      padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="fixed-width-container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="post-section">
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
